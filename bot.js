@@ -29,7 +29,7 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
 });
 client.on("message", message => {
 	var prefix = "$";
- if (message.content === "$general") {
+ if (message.content === "$help") {
   const embed = new Discord.RichEmbed()  
       .setColor("#000000") 
       .setDescription(`
@@ -45,6 +45,24 @@ $color   : لتغيير لونك في السيرفر
 $colors  : قائمة الألوان
 $credits  : التحويل ومعرفة الرصيد
 $short  : أختصار الروابط
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
+►الاوامر الادارية ◄
+$server  : لعرض معلومات عن السيرفر
+$ban : لتبنيد شخص من السيرفر
+$kick - لطرد شخص من السيرفر
+$mute : اعطاء ميوت لشخص معين
+$unmute : لفك الميوت عن شخص معين
+$clear : لمسح الشات مع عدد او بدون
+$role  : لأعطاء رتبة لشخص معين
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
+►أشياء اخرى◄
+$invite  : لدعوة البوت الى سيرفرك
+$support  : سيرفر الدعم الفني
+$shop : يرسلك رابط الشوب
+$bots : يعرض لك البوتات الي سواها صاحب البوت
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
+by : M7md 7san_77#7012
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
 	  `)
    message.channel.sendEmbed(embed)
     
