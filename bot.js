@@ -28,15 +28,12 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
   console.log('')
 });
 client.on("message", message => {
-	var prefix = "-";
- if (message.content === "-help") {
+	var prefix = "$";
+ if (message.content === "$general") {
   const embed = new Discord.RichEmbed()  
       .setColor("#000000") 
       .setDescription(`
-	  
-	         Please Chose: 
 
-			 
                                ►الاوامر العامة ◄
 $server - معلومات عن سيرفرك
 $id - معلومات عنك
