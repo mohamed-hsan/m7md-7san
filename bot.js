@@ -27,23 +27,27 @@ client.user.setGame(`Noting`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
-client.on("message", message => {
-    let args = message.content.split(" ").slice(1);
-  if (message.content.startsWith(prefix + 'owner')) {
-        let user = message.mentions.users.first();
-        let reason = args.slice(1).join(' ');
-        let modlog = client.channels.find('name', 'call-owner');
-        if (!reason) return message.reply('**ضع سبباً مقنعاً**');
-   
-    if (!modlog) return message.reply('**لا يوجد روم بأسم call-owner**');
-    const embed = new Discord.RichEmbed()
-      .setColor(0x00AE86)
-      .setTimestamp()
-      .addField('نوع الرسالة:', 'call-owner')
-      .addField('المراد قوله :', reason);
-      message.delete()
-      return client.channels.get(modlog.id).sendEmbed(embed).catch(console.error);
-      console.log('[call owner] Send By: ' + message.author.username)
-  }
-  });
+ client.on('message', ReBeeL => {
+  var prefix = "=";
+    if(ReBeeL.author.bot) return;
+      if(ReBeeL.content.startsWith(prefix + "owner")) {
+        let args = ReBeeL.content.split(" ").slice(1);
+           if(!args[0]) {
+              ReBeeL.channel.send("** =owner <message> **")
+                return;
+                  }
+                   var rebel = new Discord.RichEmbed()
+                      .setColor("RANDOM")
+                        .setDescription(`
+تم إرسآل لك رسآلة من السيرفر الخاص بك
+${ReBeeL.guild.name}
+الرسآلة
+${args}
+        `)
+        .setFooter(` بوآسطة ${ReBeeL.author.username}#${ReBeeL.author.discriminator}`)
+       ReBeeL.guild.owner.send(rebel);
+      ReBeeL.channel.send("**تم إرسآل الرسآلة إلى أونر السيرفر**")
+     }
+    }
+  );
 client.login(process.env.BOT_TOKEN);
