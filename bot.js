@@ -27,34 +27,6 @@ client.user.setGame(`Noting`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
-
-const moment = require("moment");  
-const fs = require("fs");      
-const dateFormat = require('dateformat');
-const Canvas = require("canvas");
-let profile = JSON.parse(fs.readFileSync("profile.json", "utf8"))
-client.on("message", message => {
- 
-  if (message.author.bot) return;
-  if(!message.channel.guild)return;
-  if (!profile[message.author.id]) profile[message.author.id] = {
-    tite: 'Super User',
-    rep: 0,
-    reps: 'NOT YET',
-    lastDaily:'Not Collected',
-    level: 0,
-    points: 0,
-    credits: 150,
-  };
- 
- 
-fs.writeFile('profile.json', JSON.stringify(profile), (err) => {
-if (err) console.error(err);
-})
-});
- 
- 
- 
 client.on("message", (message) => {
   let men = message.mentions.users.first()
  
@@ -78,13 +50,15 @@ message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${
 if(message.content.startsWith(prefix + "daily")) {
   if(profile[message.author.id].lastDaily != moment().format('day')) {
     profile[message.author.id].lastDaily = moment().format('day')
-    profile[message.author.id].credits += 160
-     message.channel.send(`**${message.author.username} you collect your \`160\` :dollar: daily pounds**`)
+    profile[message.author.id].credits += 200
+     message.channel.send(`**${message.author.username} you collect your \`200\` :dollar: daily pounds**`)
 } else {
     message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
 }
   }
-let cont = message.content.slice(prefix.length).split(" ");
+
+ 
+ let cont = message.content.slice(prefix.length).split(" ");
 let args = cont.slice(1);
 let sender = message.author
 if(message.content.startsWith(prefix + 'trans')) {
