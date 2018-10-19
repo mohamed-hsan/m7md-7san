@@ -33,7 +33,7 @@ client.user.setGame(`Noting`,"http://twitch.tv/S-F")
       if(ReBeeL.content.startsWith(prefix + "owner")) {
         let args = ReBeeL.content.split(" ").slice(1);
            if(!args[0]) {
-              ReBeeL.channel.send("** =owner <الرسالة> **")
+              ReBeeL.channel.send("** $owner <الرسالة> **")
                 return;
                   }
                    var rebel = new Discord.RichEmbed()
