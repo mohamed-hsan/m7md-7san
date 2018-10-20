@@ -27,23 +27,21 @@ client.user.setGame(`Noting`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
-const { Client } = require('discord.js');
-const client = new Client();
-const prefix = '$';
-var googl = require('goo.gl');
-  
-client.on('ready', () => {
-    console.log('ready');
-}).on('message', message => {
-    let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + 'short')) {
-    googl.shorten(args[1])
-    .then(function (shortenUrl) {
-        message.channel.send(`الرابط المختصر: ${shortenUrl}`);
+const shorten = require('isgd');
+client.on('message', message => {
+        var prefix = "#";
+
+ if (message.content.startsWith(prefix + 'short')) {
+    let args = message.content.split(" ").slice(1);
+  if (!args[0]) return message.channel.send('**Usage**: '+ prefix +'short <رابط>')
+  if (!args[1]) { 
+    shorten.shorten(args[0], function(res) {
+      if (res.startsWith('Error:')) return message.channel.send('**Usage**: '+ prefix +'short <link>');
+      message.channel.send(`اختصار الرابط:**<${res}>**`); 
     })
-    .catch(function (err) {
-        console.log(err.message);
-    });
-}
-});
+  } else { 
+    shorten.custom(args[0], args[1], function(res) { 
+      if (res.startsWith('Error:')) return message.channel.send(`اختصار الرابط:**${res}**`); 
+      message.channel.send(`اختصار الرابط:**<${res}>**`); 
+ })}}});
 client.login(process.env.BOT_TOKEN);
