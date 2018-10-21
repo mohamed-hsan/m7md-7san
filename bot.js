@@ -27,6 +27,33 @@ client.user.setGame(`Noing`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
+client.on("message", message => {
+    var prefix = "$";
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed()
+      .setColor("#000000") 
+      .setDescription(
+►الاوامر العامة ◄
+$avatar [user] : لعرض صورتك او صوره شخص
+$image : لعرض صورة السيرفر 
+$owner : لإرسال رسالة لاونر سيرفر 
+$id : معلومات عنك
+$server  : لعرض معلومات عن السيرفر
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
+►الاوامر الادارية ◄
+$ban : لتبنيد شخص من السيرفر
+$kick : لطرد شخص من السيرفر
+$mute : اعطاء ميوت لشخص معين
+$unmute : لفك الميوت عن شخص معين
+$clear : لمسح الشات مع عدد او بدون
+$role  : لأعطاء رتبة لشخص معين
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
+►أشياء اخرى◄
+$invite  : لدعوة البوت الى سيرفرك
+$support  : سيرفر الدعم الفني
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁)
+   message.channel.sendEmbed(embed)
 
-
+   }
+   });
 client.login(process.env.BOT_TOKEN);
