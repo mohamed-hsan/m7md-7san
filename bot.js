@@ -28,42 +28,13 @@ client.user.setGame(`Noting`,"http://twitch.tv/S-F")
   console.log('')
 });
 client.on('message', message => {
-    var prefix = "$";
-  if (message.author.x5bz) return;
-  if (!message.content.startsWith(prefix)) return;
- 
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
- 
-  let args = message.content.split(" ").slice(1);
- 
-  if (command == "ban") {
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
-         
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
-  let user = message.mentions.users.first();
-  let reason = message.content.split(" ").slice(2).join(" ");
-  /*let b5bzlog = client.channels.find("name", "5bz-log");
- 
-  if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
-  if (message.mentions.users.size < 1) return message.channel.send(`لازم تكتب وش السبب`);
-  if(!reason) return message.channel.send(`لازم تكتب وش السبب`);
-  if (!message.guild.member(user)
-  .bannable) return message.reply(`لا يمكنني طرد شخص اعلى من رتبتي`);
- 
-  message.guild.member(user).ban(7, user);
- 
-  const banembed = new Discord.RichEmbed()
-  .setAuthor(`BANNED!`, user.displayAvatarURL)
-  .setColor("RANDOM")
-  .setTimestamp()
-  .addField("**الشخص يلي اتبند:**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**اتبند من:**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**سبب الباند:**", '**[ ' + `${reason}` + ' ]**')
-  message.channel.send({
-    embed : banembed
-  })
-}
+if (message.content.startsWith("kick")) {
+    var mention = message.mentions.members.first();
+    if(!mention) return message.channel.send("يجب منشن العضو");
+
+    mention.kick("By: " + message.author.tag);
+    
+    message.channel.send("تم أعطاء كيك الى : " + mention.tag);
+};
 });
 client.login(process.env.BOT_TOKEN);
