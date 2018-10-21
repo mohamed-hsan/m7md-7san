@@ -29,7 +29,6 @@ client.user.setGame(`Noing`,"http://twitch.tv/S-F")
 });
 client.on('message', message => {
        if(message.content.startsWith(`${prefix}inv`)){
-           if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
            var embed = new Discord.RichEmbed()
            .setTitle("invite BOT")
            .setURL("https://discordapp.com/api/oauth2/authorize?client_id=502445796764024842&permissions=8&scope=bot")
