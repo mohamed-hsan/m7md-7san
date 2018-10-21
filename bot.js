@@ -28,10 +28,10 @@ client.user.setGame(`Noing`,"http://twitch.tv/S-F")
   console.log('')
 });
 client.on('message', message => {
-       if(message.content.startsWith(`${prefix}inv`)){
+       if(message.content.startsWith(`${prefix}support`)){
            var embed = new Discord.RichEmbed()
-           .setTitle("invite BOT")
-           .setURL("https://discordapp.com/api/oauth2/authorize?client_id=502445796764024842&permissions=8&scope=bot")
+           .setTitle("server support")
+           .setURL("https://discord.gg/hRTTwx")
            .setTimestamp()
            .setColor("RANDOM")
            message.channel.send({embed})
