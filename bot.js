@@ -60,7 +60,7 @@ client.on('message', message => {
   .setTimestamp()
   .addField("**الشخص يلي اتبند:**",  '**[ ' + `${user.tag}` + ' ]**')
   .addField("**اتبند من:**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**السبب الباند:**", '**[ ' + `${reason}` + ' ]**')
+  .addField("**سبب الباند:**", '**[ ' + `${reason}` + ' ]**')
   message.channel.send({
     embed : banembed
   })
