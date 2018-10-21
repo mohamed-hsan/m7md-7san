@@ -445,4 +445,20 @@ Servers Counter : __${client.guilds.size}__**`)
 
 );
 
+client.on('guildDelete', guild => {
+  client.channels.get("503629096576614440")
+const embed = new Discord.RichEmbed()
+   .setAuthor(`طردو بوتك من سيرفر ❎`)
+   .setDescription(`**
+Server name: __${guild.name}__
+Server id: __${guild.id}__
+Server owner: __${guild.owner}__
+Members Count: __${guild.memberCount}__
+Servers Counter : __${client.guilds.size}__**`)
+         .setColor("#f3ae10")
+         .setFooter('Iron BOT' , client.user.avatarURL)
+           client.channels.get("503629096576614440").send({embed});
+}
+
+);
 client.login(process.env.BOT_TOKEN);
