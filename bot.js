@@ -57,9 +57,12 @@ if (!message.content.startsWith(prefix)) return;
 		.setAuthor(`Muted!`, user.displayAvatarURL)
 		.setDescription(`      
 ${user} انت معاقب بميوت كتابي بسبب مخالفة القوانين
+
 ${message.author.tag} تمت معاقبتك بواسطة
+
 [ ${reason} ] : السبب
 اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين
+
 `)
 		.setFooter(`في سيرفر : ${message.guild.name}`)
 		.setColor("RANDOM")
