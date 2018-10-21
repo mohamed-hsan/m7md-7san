@@ -39,8 +39,8 @@ client.on('message', message => {
   if (command == "kick") {
                if(!message.channel.guild) return message.reply('**لاترسل عندي ارسل في السيرفرات يلي فيها البوت**');
          
-  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
+  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**يجب ان يمتلك البوت خاصية ` KICK_MEMBERS ` لطرد الشخص**");
+  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**يجب ان يمتلك البوت خاصية ` KICK_MEMBERS ` لطرد الشخص");
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
   if (message.mentions.users.size < 1) return message.reply("**يجب اضافة سبب الطرد**");
