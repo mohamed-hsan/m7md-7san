@@ -33,7 +33,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed()
       .setColor("#000000") 
       .setDescription(
-	      الاوامر العامه
+	      
 $avatar [user] - لعرض صورتك او صوره شخص
 $image - لعرض صورة السيرفر 
 $owner - لإرسال رسالة لاونر سيرفر 
