@@ -54,9 +54,9 @@ client.on('message', message => {
   .setAuthor(`KICKED!`, user.displayAvatarURL)
   .setColor("RANDOM")
   .setTimestamp()
-  .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
+  .addField("**الشخص المطرود:**",  '**[ ' + `${user.tag}` + ' ]**')
+  .addField("**انطرد من:**", '**[ ' + `${message.author.tag}` + ' ]**')
+  .addField("**سبب الطرد:**", '**[ ' + `${reason}` + ' ]**')
   message.channel.send({
     embed : kickembed
   })
