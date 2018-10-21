@@ -47,10 +47,10 @@ client.on('message', message => {
   /*let b5bzlog = client.channels.find("name", "5bz-log");
  
   if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
-  if (message.mentions.users.size < 1) return message.channel.send(`https://cdn.pg.sa/fjxlms81nk.png`);
+  if (message.mentions.users.size < 1) return message.channel.send(`لازم تحدد مدة الباند`);
   if(!reason) return message.channel.send(`https://cdn.pg.sa/fjxlms81nk.png`);
   if (!message.guild.member(user)
-  .bannable) return message.reply(`This User Is Have High Role !`);
+  .bannable) return message.reply(`لا يمكنني طرد شخص اعلى من رتبتي`);
  
   message.guild.member(user).ban(7, user);
  
