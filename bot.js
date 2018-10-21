@@ -31,8 +31,8 @@ client.on('message', message => {
        if(message.content.startsWith(`${prefix}support`)){
            if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
            var embed = new Discord.RichEmbed()
-           .setTitle("Support Server")
-           .setURL("https://discord.gg/hRTTwx")
+           .setTitle("invite BOT")
+           .setURL("https://discordapp.com/api/oauth2/authorize?client_id=502445796764024842&permissions=8&scope=bot")
            .setTimestamp()
            .setColor("RANDOM")
            message.channel.send({embed})
