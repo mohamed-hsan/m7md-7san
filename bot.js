@@ -27,8 +27,8 @@ client.user.setGame(`Noting`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
-var prefix = "$"
 client.on('message', message => {
+    var prefix = "$";
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
  
@@ -47,10 +47,10 @@ client.on('message', message => {
   /*let b5bzlog = client.channels.find("name", "5bz-log");
  
   if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
-  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
-  if(!reason) return message.reply ("**اكتب سبب الطرد**");
+  if (message.mentions.users.size < 1) return message.channel.send(`https://cdn.pg.sa/fjxlms81nk.png`);
+  if(!reason) return message.channel.send(`https://cdn.pg.sa/fjxlms81nk.png`);
   if (!message.guild.member(user)
-  .bannable) return message.reply("**لايمكنني طرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
+  .bannable) return message.reply(`This User Is Have High Role !`);
  
   message.guild.member(user).ban(7, user);
  
