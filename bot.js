@@ -32,14 +32,14 @@ client.on("message", message => {
  if (message.content === "$help") {
   const embed = new Discord.RichEmbed()
       .setColor("#000000") 
-      .setDescription(►الاوامر العامة ◄
+      .setDescription(الاوامر العامة
 $avatar [user] - لعرض صورتك او صوره شخص
 $image - لعرض صورة السيرفر 
 $owner - لإرسال رسالة لاونر سيرفر 
 $id - معلومات عنك
 $server  : لعرض معلومات عن السيرفر
 ▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
-►الاوامر الادارية ◄
+الاوامر الادارية 
 $ban : لتبنيد شخص من السيرفر
 $kick - لطرد شخص من السيرفر
 $mute : اعطاء ميوت لشخص معين
