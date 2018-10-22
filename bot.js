@@ -357,7 +357,6 @@ client.on('message', msg => {
     }
 }
 });
-
 client.on("message", message => {
 	var args = message.content.split(' ').slice(1); 
 	var msg = message.content.toLowerCase();
