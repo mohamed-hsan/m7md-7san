@@ -33,6 +33,7 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setDescription(`
+**
 ►الاوامر العامة ◄
 $avatar [user] - لعرض صورتك او صوره شخص
 $image - لعرض صورة السيرفر 
@@ -52,7 +53,7 @@ $role  : لأعطاء رتبة لشخص معين
 $invite  : لدعوة البوت الى سيرفرك
 $support  : سيرفر الدعم الفني
 ▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
-
+**
       `)
    message.channel.sendEmbed(embed)
 
