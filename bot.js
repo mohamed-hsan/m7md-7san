@@ -467,7 +467,7 @@ client.on('guildMemberAdd', member => {
   .addField("***شكرا الانضمامك الينا***" ,member.user.username )
     .setDescription('***بكل حب واحترام وشوق نستقبلك ونتمنى لك قضآء أجمل اللحظات ولآوقات معنا***')
     .setColor('RANDOM')
-    .setImage('http://www.imgion.com/images/01/Welcome-buddy.jpg')
+    .setImage('https://images.google.com.sa/imgres?imgurl=http%3A%2F%2Fwww.e4sa.net%2Fwp-content%2Fuploads%2F2018%2F02%2Fwelcome.jpg&imgrefurl=http%3A%2F%2Fwww.e4sa.net%2Fwelcome%2F&docid=GCnw6UZUx_VoYM&tbnid=MUxZuLk21bgFeM%3A&vet=1&w=3298&h=1270&source=sh%2Fx%2Fim')
 var channel =member.guild.channels.find('name', 'welcome')
 if (!channel) return;
 channel.send({embed : embed});
