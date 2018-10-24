@@ -427,7 +427,7 @@ client.on('message', message => {
    });
 client.on('guildCreate', guild => {
     
-  client.channels.get("503629096576614440")
+  client.channels.get("503629039383085082")
 const embed = new Discord.RichEmbed()
    .setAuthor(`بوتك دخل سيرفر جديد مبروك ✅`)
    .setDescription(`**
@@ -439,7 +439,7 @@ Servers Counter : __${client.guilds.size}__**`)
          .setColor("#f3ae10")
          .addField("New Server!")
          .setFooter('Iron BOT' , client.user.avatarURL)
-           client.channels.get("503629096576614440").send({embed});
+           client.channels.get("503629039383085082").send({embed});
 }
 
 );
