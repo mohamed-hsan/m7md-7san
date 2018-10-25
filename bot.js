@@ -58,7 +58,6 @@ $support  : سيرفر الدعم الفني
 
    }
    });
-
 client.on('message', message => {
     if (message.content.startsWith("$avatar")) {
         if (message.author.bot) return
