@@ -271,96 +271,42 @@ client.on('message', message => {
 }
 });
 
-client.on('message', async message => {
-  let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "mute")) {
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+client.on("message", message => {
+  if (message.author.bot) return;
  
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+  let command = message.content.split(" ")[0];
  
-    let mention = message.mentions.members.first();
-    if(!mention) return  message.channel.send('').then(msg => { 
-      msg.delete(3500);
-      message.delete(3500);
-    });
+  if (command === "$mute") {
+        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
+  let user = message.mentions.users.first();
+  let modlog = client.channels.find('name', 'mute-log');
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+  if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").catch(console.error);
+  if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').catch(console.error);
  
-    if(mention.id === message.author.id) return message.channel.send('**:x:You Cannot give mute to your self**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500); 
-    });
+  const embed = new Discord.RichEmbed()
+    .setColor(0x00AE86)
+    .setTimestamp()
+    .addField('الأستعمال:', 'اسكت/احكي')
+    .addField('تم ميوت:', `${user.username}#${user.discriminator} (${user.id})`)
+    .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
    
-    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`**:x: لا يمكن آعطاء ميوت لادارة السيرفر**`); //حقوق ديموند كودز و XAM991
+   if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
  
-    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source: ${mention.user.username} Already Muted**`);
- 
-   
-    if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('You Donot Have Permission **Muted_Members** ').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
+  if (message.guild.member(user).roles.has(muteRole.id)) {
+     return message.reply("** تم اعطاء العضو المحدد ميوت  **").catch(console.error);
+  } else {
+    message.guild.member(user).addRole(muteRole).then(() => {
+      return message.reply("** تم اعطاء العضو المحدد ميوت كتابي .. **").catch(console.error);
     });
-   
-    if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('I Donot Have Permission **Muted_Members**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500); 
-    });
-   
-    let duration = args[2];
-    if(!duration) message.channel.send(`**:hash: You Can Use ${prefix}mute @user Time Reason**`).then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(isNaN(duration))  message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    let reason = message.content.split(" ").slice(3).join(" ");
-    if(!reason) reason = " [ **لم يذكر لماذا** ] ";
- 
-    let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('**تم آعطائك ميوت**')
-    .addField('**__السيرفر__**',[ message.guild.name ]) 
-    .addField('**__تم آعطائك ميوت بواسطة__**', [ message.author ])
-    .addField('**__آلسبب__**',reason)
-    .addField('**__وقت الميوت__**',duration)
- 
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!role) try {
-      message.guild.createRole({
-        name: "Muted",
-        permissions: 0 
-      }).then(r => {
-        message.guild.channels.forEach(c => {
-          c.overwritePermissions(r , {
-            SEND_MESSAGES: false, 
-            READ_MESSAGES_HISTORY: false,
-            ADD_REACTIONS: false
-          });
-        });
-      }); //حقوق ديموند كودز و XAM991
-    } catch(e) {
-      console.log(e.stack);
-    }
-    mention.addRole(role).then(() => {
-      mention.send(thisEmbed);
-      message.channel.send(`**:white_check_mark: ${mention.user.username}  Muted! :zipper_mouth:  **  `);
-      mention.setMute(true); 
-    });
-    setTimeout(() => {
-      if(duration === 0) return;
-      mention.setMute(false);
-      mention.removeRole(role)
-    },duration * 60000); 
   }
+ 
+};
+ 
 });
+
+
+
 client.on('message', async message => {
     let mention = message.mentions.members.first();
 let command = message.content.split(" ")[0];
