@@ -529,5 +529,11 @@ if (!channel) return;
 channel.send({embed : embed});
 });
 
+client.on('message', msg => {
+  if (msg.content === 'discord.gg') {
+   msg.delete(30)
+    msg.reply('ممنوع النشر !!');
+  }
+});
 
 client.login(process.env.BOT_TOKEN);
