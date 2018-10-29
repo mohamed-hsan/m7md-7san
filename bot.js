@@ -528,7 +528,6 @@ var channel =member.guild.channels.find('name', 'welcome')
 if (!channel) return;
 channel.send({embed : embed});
 });
-
 client.on('message', msg => {
   if (msg.content === 'discord.gg') {
    msg.delete(30)
