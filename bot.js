@@ -528,8 +528,9 @@ var channel =member.guild.channels.find('name', 'welcome')
 if (!channel) return;
 channel.send({embed : embed});
 });
+
 client.on('message', msg => {
-  if (msg.content === 'discord.gg') {
+  if (msg.content === 'https://discord.gg/') {
    msg.delete(30)
     msg.reply('ممنوع النشر !!');
   }
