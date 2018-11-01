@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`by:M7md 7san |$help`,"http://twitch.tv/S-F")
+client.user.setGame(``,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -450,24 +450,6 @@ if (message.content.startsWith(adminprefix + 'st')) {
     message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
 }
 });
-client.on('guildCreate', guild => {
-    
-  client.channels.get("503629039383085082")
-const embed = new Discord.RichEmbed()
-   .setAuthor(`بوتك دخل سيرفر جديد مبروك ✅`)
-   .setDescription(`**
-Server name: __${guild.name}__
-Server id: __${guild.id}__
-Server owner: __${guild.owner}__
-Member Count: __${guild.memberCount}__
-Servers Counter : __${client.guilds.size}__**`)
-         .setColor("#f3ae10")
-         .addField("")
-         .setFooter('iron bot' , client.user.avatarURL)
-           client.channels.get("503629039383085082").send({embed});
-}
-
-);
 client.on('guildDelete', guild => {
   client.channels.get("503629096576614440")
 const embed = new Discord.RichEmbed()
@@ -484,4 +466,5 @@ Servers Counter : __${client.guilds.size}__**`)
 }
 
 );
+
 client.login(process.env.BOT_TOKEN);
