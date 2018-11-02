@@ -49,7 +49,7 @@ $clear : لمسح الشات مع عدد او بدون
 $role  : لأعطاء رتبة لشخص معين
 ▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
 ►أشياء اخرى◄
-$invite  : لدعوة البوت الى سيرفرك
+$inv  : لدعوة البوت الى سيرفرك
 $support  : سيرفر الدعم الفني
 ▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
       `)
@@ -407,15 +407,11 @@ client.on("message", message => {
 });
 
 client.on('message', message => {
-       if(message.content.startsWith(`${prefix}inv`)){
-           var embed = new Discord.RichEmbed()
-           .setTitle("invite BOT")
-           .setURL("https://discordapp.com/api/oauth2/authorize?client_id=502445796764024842&permissions=8&scope=bot")
-           .setTimestamp()
-           .setColor("RANDOM")
-           message.channel.send({embed})
-       }
-   });
+    if(message.content === '$inv') {
+        message.channel.send('https://discordapp.com/api/oauth2/authorize?client_id=502445796764024842&permissions=8&scope=bot  ');
+    }
+});
+
 
 client.on('message', message => {
     if(message.content === '$support') {
