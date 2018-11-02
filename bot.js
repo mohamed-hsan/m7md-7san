@@ -418,15 +418,10 @@ client.on('message', message => {
    });
 
 client.on('message', message => {
-       if(message.content.startsWith(`${prefix}support`)){
-           var embed = new Discord.RichEmbed()
-           .setTitle("server support")
-           .setURL("https://discord.gg/ZmESGan")
-           .setTimestamp()
-           .setColor("RANDOM")
-           message.channel.send({embed})
-       }
-   });
+    if(message.content === '$support') {
+        message.channel.send('https://discord.gg/PJ7Vjf');
+    }
+});
 
 const adminprefix = "$";
 const devs = ['445172980478246934','445172980478246934'];
