@@ -27,22 +27,86 @@ client.user.setGame(``,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
-client.on('message', message => { 
-    var prefix = "$";
-    if (message.author.boss) return;
-    if (!message.content.startsWith(prefix)) return;
-    let command = message.content.split(" ")[0];
-    command = command.slice(prefix.length);
-    if (command == "Role") {
-    if (!message.channel.guild) return;
-    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.reply("**:no_entry_sign:انت لا تملك صلاحيات **").then(msg => msg.delete(5000));;
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
-    let user = message.mentions.users.first();
-    if (message.mentions.users.size < 1) return message.reply('**ضع منشن الشخص!!**').then(msg => {msg.delete(5000)});
-    let MRole = message.content.split(" ").slice(2).join(" ");
-    if(!MRole)return message.reply("يجب عليك وضع اسم الرتبة").then(msg => {msg.delete(5000)});
-    message.guild.member(user).addRole(message.guild.roles.find("name", MRole));
-    message.reply('*** Done :white_check_mark:  ***').then(msg => {msg.delete(10000)});
-    }
+client.on('message', async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
+ 
+  let args = message.content.split(" ");
+  let command = args[0];
+ 
+  if(message.content.startsWith(prefix + "clear")) {
+    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply('**انت لا تملك الخصائص الكافية.**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
     });
+ 
+    if(!args[1]) {
+      var stop = true;
+      var msg = parseInt(100);
+ 
+      stop = false;
+      setTimeout(() => {
+        stop = true;
+      },3005);
+      setInterval(() => {
+        if(stop === true) return;
+        message.channel.fetchMessages({
+          limit: msg
+        }).then(m => {
+          message.channel.bulkDelete(msg).then(() => {
+            message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
+              msg.delete(3000);
+            });
+          });
+        });
+      },1000);
+    } else if(args[1]) {
+      if(args[1] <= 100) {
+          message.channel.fetchMessages({
+              limit: msg
+          }).then(m => {
+              message.channel.bulkDelete(m).then(() => {
+                  message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
+              msg.delete(3000);
+                  });
+              });
+          });
+      } else if(args[1] <= 200) {
+        stop = true;
+        setTimeout(() => {
+          stop = false;
+        },2001);
+        setInterval(() => {
+          if(stop === true) return;
+          message.channel.fetchMessages({
+            limit: msg
+          }).then(m => {
+            message.channel.bulkDelete(m).then(() => {
+                message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
+              msg.delete(3000);
+                  });
+            });
+          });
+        },1000);
+      } else if(args[1] <= 300) {
+        stop = true;
+        setTimeout(() => {
+          stop = false;
+        },2001);
+        setInterval(() => {
+          if(stop === true) return;
+          message.channel.fetchMessages({
+            limit: msg
+          }).then(m => {
+            message.channel.bulkDelete(m).then(() => {
+            message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
+              msg.delete(3000);
+                  });
+            });
+          });
+        });
+      }
+    }
+  }
+});
 client.login(process.env.BOT_TOKEN);
