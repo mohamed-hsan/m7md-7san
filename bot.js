@@ -27,10 +27,14 @@ client.user.setGame(``,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'help')) { //DiamondCodes - [ X_KillerYT ]
-    let pages = [`
-►الاوامر العامة ◄
+  client.on("message", message => {
+    var prefix = "-";
+ if (message.content === "help") {
+      message.channel.send('**تم ارسالك في الخاص** 📬 ');
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+           ►الاوامر العامة ◄
 $avatar [user] : لعرض صورتك او صوره شخص
 $image : لعرض صورة السيرفر 
 $owner : لإرسال رسالة لاونر سيرفر 
@@ -50,23 +54,9 @@ $role- : لأزالة رتبة من شخص معين
 $invite  : لدعوة البوت الى سيرفرك
 $support  : سيرفر الدعم الفني
 ▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
-by : M7md 7san_77#7012
-▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
-   
-`]
-    let page = 1;
- 
-    let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setFooter(`Page ${page} of ${pages.length}`)
-    .setDescription(pages[page-1])
- 
-    message.author.sendEmbed(embed).then(msg => {
- 
-});
-client.on('message', message => {
-    if(message.content === '$help') {
-        message.reply('تم ارساله بالخاص :white_check_mark: ');
-    }
-});
+ `)
+   message.author.sendEmbed(embed)
+    
+   }
+   });
 client.login(process.env.BOT_TOKEN);
