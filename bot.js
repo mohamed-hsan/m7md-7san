@@ -52,7 +52,7 @@ $support  : سيرفر الدعم الفني
 ▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
    
 `]
-    let page = ;
+    let page = 1;
  
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
@@ -75,7 +75,7 @@ $support  : سيرفر الدعم الفني
  
  
         backwards.on('collect', r => {
-            if (page === ) return;
+            if (page === 1) return;
             page--;
             embed.setDescription(pages[page-1]);
             embed.setFooter(`Page ${page} of ${pages.length}`);
