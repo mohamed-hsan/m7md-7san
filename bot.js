@@ -27,14 +27,10 @@ client.user.setGame(``,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
-  client.on("message", message => {
-    var prefix = "-";
- if (message.content === "help") {
-      message.channel.send('**تم ارسالك في الخاص** 📬 ');
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-           ►الاوامر العامة ◄
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'help')) { 
+    let pages = [`
+  ►الاوامر العامة ◄
 $avatar [user] : لعرض صورتك او صوره شخص
 $image : لعرض صورة السيرفر 
 $owner : لإرسال رسالة لاونر سيرفر 
@@ -54,9 +50,52 @@ $role- : لأزالة رتبة من شخص معين
 $invite  : لدعوة البوت الى سيرفرك
 $support  : سيرفر الدعم الفني
 ▁ ▂ ▃ ▄ ▅ ▆ ▇ █   █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
- `)
-   message.author.sendEmbed(embed)
-    
-   }
-   });
+   
+`]
+    let page = 1;
+ 
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setFooter(`Page ${page} of ${pages.length}`)
+    .setDescription(pages[page-1])
+ 
+    message.author.sendEmbed(embed).then(msg => {
+ 
+        msg.react('').then( r => {
+            msg.react('')
+ 
+ 
+        const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
+        const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
+ 
+ 
+        const backwards = msg.createReactionCollector(backwardsFilter, { time: 2000000});
+        const forwards = msg.createReactionCollector(forwardsFilter, { time: 2000000});
+ 
+ 
+ 
+        backwards.on('collect', r => {
+            if (page === 1) return;
+            page--;
+            embed.setDescription(pages[page-1]);
+            embed.setFooter(`Page ${page} of ${pages.length}`);
+            msg.edit(embed)
+        })
+        forwards.on('collect', r => {
+            if (page === pages.length) return;
+     
+      page++;
+            embed.setDescription(pages[page-1]);
+            embed.setFooter(`Page ${page} of ${pages.length}`);
+            msg.edit(embed)
+        })
+        })
+    })
+    }
+});
+client.on('message', message => {
+    if(message.content === '$help') {
+        message.reply('تم ارساله بالخاص :white_check_mark: ');
+    }
+});
 client.login(process.env.BOT_TOKEN);
