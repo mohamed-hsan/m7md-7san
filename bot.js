@@ -491,7 +491,7 @@ var channel =member.guild.channels.find('name', 'welcome')
 if (!channel) return;
 channel.send({embed : embed});
 });
-const devs = ["445172980478246934"];
+const devs = ["509698049220542474"];
 const adminprefix = ["$"];
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
